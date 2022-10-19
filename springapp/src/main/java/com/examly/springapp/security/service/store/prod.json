@@ -1,0 +1,35 @@
+[{
+ 
+    "productName": "Asus Zenfone",
+    "productModelNo": "M1",
+    "dateOfPurchase": "11/09/2022",
+    "contactNumber": "9940229658",
+    "problemDescription": "speaker not working",
+    "availableSlots": "12:30"
+},
+{
+
+    "productName": "Iphone 13",
+    "productModelNo": "X1",
+    "dateOfPurchase": "11/09/2022",
+    "contactNumber": "9940229658",
+    "problemDescription": "camera not working",
+    "availableSlots": "10:30"
+},{
+
+    "productName": "Samsung SmartTv",
+    "productModelNo": "NewGen8",
+    "dateOfPurchase": "07/09/2022",
+    "contactNumber": "9940229658",
+    "problemDescription": "display not working",
+    "availableSlots": "09:30"
+},{
+
+    "productName": "Onida LEDTv",
+    "productModelNo": "7thGen",
+    "dateOfPurchase": "27/09/2022",
+    "contactNumber": "9940229658",
+    "problemDescription": "sound not working",
+    "availableSlots": "03:30"
+}
+]

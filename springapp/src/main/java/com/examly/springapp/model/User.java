@@ -1,5 +1,6 @@
 package com.examly.springapp.model;
 
+import java.io.Serializable;
 import java.util.*;
 
 import javax.persistence.*;
@@ -9,7 +10,8 @@ import javax.validation.constraints.*;
         @UniqueConstraint(columnNames = "username"),
         @UniqueConstraint(columnNames = "email")
 })
-public class User {
+public class User implements Serializable{
+    private static final long serialVersionUID = -2517851941873251699L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

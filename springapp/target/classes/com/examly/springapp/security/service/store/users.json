@@ -1,0 +1,83 @@
+[{
+       
+    "username": "user-man",
+    "email": "user@gmail.com",
+    "password": "user12345",
+    "mobilenum": "9840279658",
+    "role": [
+   "admin"
+    ]
+},
+    {
+       
+        "username": "admin-man",
+        "email": "admin@gmail.com",
+        "password": "$2a$10$gABhLdd0cN4udfC7eM8SVecl4YHZnfZ6mHVNx1LuPQARksEfnVI7W",
+        "mobilenum": "9840279658",
+        "role": [
+       "admin"
+        ]
+    },
+    {
+     
+        "username": "user-boy",
+        "email": "userboy@gmail.com",
+        "password": "user12345",
+        "mobilenum": "9830279658",
+        "role": [
+        "user"
+        ]
+    },
+    {
+     
+        "username": "admin-boy",
+        "email": "adminboy@gmail.com",
+        "password": "$2a$10$IF.YurFXE1gQst4G4AYaKugPZNu4C/Pvl2qQ/AolDuzZk5nR9nrWi",
+        "mobilenum": "9830179658",
+        "role": [
+          "admin"
+        ]
+    },
+    {
+ 
+        "username": "good-admin",
+        "email": "goodadmin@gmail.com",
+        "password": "$2a$10$Eh66fxJ/xDEqTsZBBOX5nuIc/UZdVFDkyfsZnoG8BmGcmFQfcn6f.",
+        "mobilenum": "9830279758",
+        "role": [
+         "admin"
+        ]
+    },
+    {
+   
+        "username": "good-user",
+        "email": "gooduser@gmail.com",
+        "password": "user12345",
+        "mobilenum": "9850279758",
+        "role": [
+           "user"
+        ]
+    },
+    {
+    
+        "username": "multi-man",
+        "email": "muli@gmail.com",
+        "password": "multi12345",
+        "mobilenum": "9851279758",
+        "role": [
+           "user"
+           ,"admin"  
+            
+        ]
+    },
+    {
+  
+        "username": "mega-man",
+        "email": "mega@gmail.com",
+        "password": "mega12345",
+        "mobilenum": "9811270758",
+        "role": [
+            "admin"
+        ]
+    }
+]

@@ -29,6 +29,7 @@ import com.examly.springapp.repository.RoleRepository;
 import com.examly.springapp.repository.UserRepository;
 import com.examly.springapp.security.service.UserDetailsImpl;
 import com.examly.springapp.security.service.jwt.JwtUtils;
+import com.examly.springapp.security.service.store.MyCredentials;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -59,6 +60,10 @@ public class AuthController {
     String jwt = jwtUtils.generateJwtToken(authentication);
 
     UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+    //---------------------------------------------------------------------------   
+   
+    MyCredentials.setInstanceDetailsImpl(userDetails);
+    //---------------------------------------------------------------------------
     List<String> roles = userDetails.getAuthorities().stream()
         .map(item -> item.getAuthority())
         .collect(Collectors.toList());

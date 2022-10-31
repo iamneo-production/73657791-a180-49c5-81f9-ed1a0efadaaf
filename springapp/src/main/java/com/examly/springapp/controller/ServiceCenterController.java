@@ -19,10 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.examly.springapp.model.ServiceCenter;
 import com.examly.springapp.payload.response.MessageResponse;
 import com.examly.springapp.repository.ServiceCenterRepository;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 import javax.validation.Valid;
 
 @RestController
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/api/test/admin")
 @PreAuthorize("hasRole('ADMIN')")
 public class ServiceCenterController {

@@ -1,7 +1,5 @@
 package com.examly.springapp.controller;
 
-
-
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -26,10 +24,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.examly.springapp.model.ERole;
 import com.examly.springapp.model.Role;
 import com.examly.springapp.payload.request.RequestBox;
+import com.examly.springapp.payload.request.SignupRequest;
 import com.examly.springapp.repository.RoleRepository;
 import com.examly.springapp.repository.UserRepository;
 import com.examly.springapp.model.User;
-
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -67,7 +65,8 @@ public class UserController {
     }
 
     @PostMapping("/add")
-    public User addUser(@RequestBody RequestBox request)// this is just a request body not a signup
+    public User addUser(@RequestBody SignupRequest request)
+    //public User addUser(@RequestBody RequestBox request)// this is just a request body not a signup
     {
         Set<Role> roles = retrieveRoles(request.getRole());
 
@@ -85,12 +84,11 @@ public class UserController {
     public Optional<User> getUser(@PathVariable("id") Long id) {
         return userRepository.findById(id);
     }
+
     @GetMapping("/get")
     public List<User> getUsers() {
         return userRepository.findAll();
     }
-
-   
 
     @PutMapping("/edit/{id}")
 
@@ -105,14 +103,15 @@ public class UserController {
         // employee.setLastName(employeeDetails.getLastName());
         user.setUsername(request.getUsername());
         user.setEmail(request.getEmail());
-        user.setPassword(request.getPassword());
+        // user.setPassword(request.getPassword());
         user.setMobilenum(request.getMobilenum());
-        Set<Role> roles = retrieveRoles(request.getRole());
-        user.setRoles(roles);
+        // Set<Role> roles = retrieveRoles(request.getRole());
+        // user.setRoles(roles);
         User updatedUser = userRepository.save(user);
         return ResponseEntity.ok(updatedUser);
     }
 
+    @PreAuthorize("hasRole('USER')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Map<String, Boolean>> deleteEmployee(@PathVariable Long id) {
         // User user = userRepository.findById(id)
@@ -124,5 +123,5 @@ public class UserController {
         response.put("deleted", Boolean.TRUE);
         return ResponseEntity.ok(response);
     }
- 
+
 }

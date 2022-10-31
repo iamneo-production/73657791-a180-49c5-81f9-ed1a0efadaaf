@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
     @GetMapping("/all")
     public String allAccess() {
-      return "Public Content.";
+      return "Welcome to Wooden Relics ";
     }
   
     @GetMapping("/user")

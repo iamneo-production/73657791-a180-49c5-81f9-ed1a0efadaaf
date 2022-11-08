@@ -17,7 +17,8 @@ import ViewCenter from "./components/ViewCenter";
 // import BoardModerator from "./components/BoardModerator";
 import BoardAdmin from "./components/BoardAdmin";
 import UpdateProfile from "./components/UpdateProfile";
-
+import AddAppointment from "./components/AddAppointment";
+import EditAppointment from "./components/EditAppointment";
 
 //import { ReqAuth } from "./services/ReqAuth";
 //import ProtectedRoute from "./services/ProtectedRoute";
@@ -155,6 +156,7 @@ const App = () => {
 
       <div className="container mt-3">
         <Routes>
+{/*-------------------------User Controller---------------------------------------*/}
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -166,12 +168,15 @@ const App = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/mybooking" element={<Booking />} />
           {/* <Route path="/mod" element={<BoardModerator/>} /> */}
-{/*----------------------------------------------------------------*/}
+{/*----------------------------Service Center------------------------------------*/}
           <Route path="/admin" element={<BoardAdmin />} />
           <Route path="/addcenter" element={<AddCenter />} />
           <Route path="/editcenter" element={<AddCenter />} />
           <Route path="/viewcenter" element={<ViewCenter />} />
-          
+{/*----------------------------Appointment------------------------------------*/}
+          <Route path="/addAppointment" element={<AddAppointment/>}></Route>
+          <Route path="/editAppointment" element={<EditAppointment/>}></Route>
+        
         </Routes>
       </div>
     </div>

@@ -7,9 +7,13 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.examly.springapp.model.Product;
+import com.examly.springapp.model.ServiceCenter;
 import com.examly.springapp.model.User;
 
 
 public interface ProductRepository extends JpaRepository<Product,Long>{
     List<Product> findByUserperson(User userperson);
+    //----------------Adding Service Center------------------------------------
+    List<Product> findByServiceCenter(ServiceCenter serviceCenter);
+    //-------------------------------------------------------------------------
 }

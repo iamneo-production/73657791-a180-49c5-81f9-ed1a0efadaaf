@@ -34,6 +34,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.PrimaryKeyJoinColumns;
+import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.Valid;
@@ -41,15 +44,22 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import com.examly.springapp.model.User;
+import com.examly.springapp.model.ServiceCenter;
 
 @Entity
 @Table(name = "products")
-public class Product implements Serializable{
+// for cus_prod_serv TBL
+@SecondaryTable(name = "cus_prod_serv", pkJoinColumns = {
+        @PrimaryKeyJoinColumn(name = "prod_id", referencedColumnName = "id") })
+// @SecondaryTable(name = "cus_prod",pkJoinColumns ={
+// @PrimaryKeyJoinColumn(name="prod_id",referencedColumnName = "id")})
+public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
+    @Column(nullable = false)
     @NotBlank
+
     private String productName;
     @Column
     @NotBlank
@@ -71,18 +81,37 @@ public class Product implements Serializable{
     private LocalTime availableSlots;
     // @ManyToOne(targetEntity = User.class, cascade = CascadeType.ALL)
     @ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
+
     // prod_id-PRI
     // user_id-FK
-    //@JoinTable(name = "cus_prod", joinColumns = @JoinColumn(name = "prod_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
-    @JoinTable(name = "cus_prod", joinColumns = @JoinColumn(name = "prod_id"),
-     inverseJoinColumns = {@JoinColumn(name = "user_id",referencedColumnName = "id"),@JoinColumn(name="user_name",referencedColumnName = "username")})
-    
-    // @JoinColumn(name = "user_id", referencedColumnName = "id")
+    // @JoinTable(name = "cus_prod", joinColumns = @JoinColumn(name = "prod_id"),
+    // inverseJoinColumns = @JoinColumn(name = "user_id"))
+    @JoinColumn(name = "user_id", referencedColumnName =
+    "id",table="cus_prod_serv")
+    @JoinColumn(name = "user_name", referencedColumnName =
+    "username",table="cus_prod_serv")
+
+    // @JoinTable(name = "cus_prod", joinColumns = @JoinColumn(name = "prod_id"), inverseJoinColumns = {
+    //         @JoinColumn(name = "user_id", referencedColumnName = "id", table = "cus_prod"),
+    //         @JoinColumn(name = "user_name", referencedColumnName = "username", table = "cus_prod") })
+
     // @OnDelete(action = OnDeleteAction.CASCADE)
     // @JsonIgnore
     // @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private User userperson;
 
+    // ----------------Adding Service Center------------------------------------
+    @ManyToOne(targetEntity = ServiceCenter.class, fetch = FetchType.LAZY)
+
+    @JoinColumn(name = "serv_id", referencedColumnName =
+    "sid",table="cus_prod_serv")
+    @JoinColumn(name = "serv_name", referencedColumnName =
+    "name",table="cus_prod_serv")
+    // @JoinTable(name = "prod_serv", joinColumns = @JoinColumn(name = "prod_id", referencedColumnName = "id"), inverseJoinColumns = {
+    //         @JoinColumn(name = "serv_name", referencedColumnName = "name"),
+    //         @JoinColumn(name = "serv_id", referencedColumnName = "sid") })
+     private ServiceCenter serviceCenter;
+    // -------------------------------------------------------------
     // private Time availableSlots;
 
     // private Time availableSlots;
@@ -119,6 +148,22 @@ public class Product implements Serializable{
         LocalTime lt = LocalTime.parse(strTime, dtf);
         this.availableSlots = lt;
     }
+
+    // ----------------Adding Service Center------------------------------------
+    public Product(String productName, String productModelNo, Date dateOfPurchase, String contactNumber,
+            String problemDescription, String strTime, ServiceCenter serviceCenter) {
+        this.productName = productName;
+        this.productModelNo = productModelNo;
+        this.dateOfPurchase = dateOfPurchase;
+        this.contactNumber = contactNumber;
+        this.problemDescription = problemDescription;
+        // this.availableSlots = availableSlots;
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
+        LocalTime lt = LocalTime.parse(strTime, dtf);
+        this.availableSlots = lt;
+        this.serviceCenter = serviceCenter;
+    }
+    // -------------------------------------------------------------------------
 
     public Product() {
     }
@@ -193,6 +238,16 @@ public class Product implements Serializable{
         this.userperson = userperson;
     }
 
+    // ----------------Adding Service Center----------------------------------------
+    public ServiceCenter getServiceCenter() {
+        return this.serviceCenter;
+    }
+
+    public void setServiceCenter(ServiceCenter serviceCenter) {
+        this.serviceCenter = serviceCenter;
+    }
+
+    // ----------------------------------------------------------------
     public Long getId() {
         return this.id;
     }

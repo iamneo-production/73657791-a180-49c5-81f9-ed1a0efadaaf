@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import serviceCenterProvider from "../services/serviceCenterProvider";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link ,useNavigate} from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 
 const AddCenter = () => {
   const [name, setName] = useState("");
@@ -24,7 +24,7 @@ const AddCenter = () => {
 
   const title = () => {
     if (sid!=-1) {
-      return <h2 className="text-center">UPDATE Employee</h2>;
+      return <h2 className="text-center">UPDATE Service Center</h2>;
     } else {
     return <h2 className="text-center">ADD Service Center</h2>;
     }
@@ -158,7 +158,9 @@ const AddCenter = () => {
                 <Link
                   to="/viewcenter"
                   className="btn btn-danger ms-1"
-                  //onClick={() => handleClick()}
+                  onClick={() =>{
+                    serviceCenterProvider.removeCurrentService();
+                  }}
                 >
                   Cancel
                 </Link>

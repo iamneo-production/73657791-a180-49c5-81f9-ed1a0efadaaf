@@ -67,7 +67,7 @@ public class ServiceCenterController {
     }
 
     @GetMapping("/getServ/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
     public ResponseEntity<?> getServiceCenterById(@PathVariable Long id) {
         ServiceCenter serviceCenter = serviceCenterRepository.findBySid(id).get();
         // .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id:
@@ -76,6 +76,7 @@ public class ServiceCenterController {
     }
 
     @GetMapping("/viewServ")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public List<ServiceCenter> getServiceCenter() {
 
         return serviceCenterRepository.findAll();

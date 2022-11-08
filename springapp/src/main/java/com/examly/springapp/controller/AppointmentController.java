@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.examly.springapp.model.Product;
+import com.examly.springapp.model.ServiceCenter;
 import com.examly.springapp.model.User;
 import com.examly.springapp.payload.request.AppoDetails;
 import com.examly.springapp.payload.response.MessageResponse;
@@ -30,6 +32,7 @@ import com.examly.springapp.security.service.UserDetailsImpl;
 
 
 @RestController
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/api/test/user")
 @PreAuthorize("hasRole('USER')")
 public class AppointmentController {
@@ -39,6 +42,7 @@ public class AppointmentController {
     UserRepository userRepository;
     @Autowired
     private ProductRepository productRepository;
+
     @PostMapping("/addAppo")
     public ResponseEntity<?> addAppo(@RequestBody Product product) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -60,6 +64,12 @@ public class AppointmentController {
         //return ResponseEntity.ok(product);
        //return ResponseEntity.ok(new MessageResponse("Appointment added"));
     }
+    //----------------Adding Service Center------------------------------------
+    @GetMapping("/viewServAppo")
+    public List<Product> getAppoByServ(@RequestBody ServiceCenter serviceCenter) {
+       return productRepository.findByServiceCenter(serviceCenter);
+    }
+    //-------------------------------------------------------------------------
     @PutMapping("/editAppo/{id}")
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<?> editAppo(@PathVariable Long id, @RequestBody AppoDetails productDetails) {
@@ -89,7 +99,7 @@ public class AppointmentController {
         response.put("deleted",Boolean.TRUE);
         return ResponseEntity.ok(response);
     }
-    @GetMapping("/getAppo")
+    @GetMapping("/getAppo")//testing purpose only,doesnt store it in db
     public ResponseEntity<?> getAppo(@RequestBody Product product) {
   
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

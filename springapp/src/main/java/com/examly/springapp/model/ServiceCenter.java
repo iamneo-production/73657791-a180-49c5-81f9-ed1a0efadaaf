@@ -2,6 +2,8 @@ package com.examly.springapp.model;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +20,7 @@ import org.hibernate.annotations.Parameter;
 
 @Entity
 @Table(name = "serviceCenter")
-public class ServiceCenter {
+public class ServiceCenter implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // @Column(nullable = false)

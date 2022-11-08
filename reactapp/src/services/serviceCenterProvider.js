@@ -8,13 +8,16 @@ class ServiceCenterProvider{
   getCurrentService=()=>{
     return JSON.parse(localStorage.getItem("service"));
   }
+  removeCurrentService=()=>{
+    localStorage.removeItem("service");
+  }
     AddService=(service)=>{
       return axios.post(API_URL+"addServ",service,{ headers: authHeader() });
     }
     getServices() {
         return axios.get(API_URL+"viewServ",{ headers: authHeader() });
       }
-    getServiceById(Id,service) {
+    getServiceById(Id) {
         return axios.get(API_URL+"getServ/"+Id, {headers: authHeader() });
       }
       EditService=(Id,service)=>{

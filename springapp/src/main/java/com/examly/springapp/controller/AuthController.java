@@ -99,7 +99,7 @@ if (Boolean.TRUE.equals(userRepository.existsByMobilenum(signUpRequest.getMobile
 
     // Create new user's account
     User user = new User(signUpRequest.getUsername(),
-        signUpRequest.getEmail(),
+        signUpRequest.getEmail(),                                                                                                                                                                                                         
         encoder.encode(signUpRequest.getPassword()),
         signUpRequest.getMobilenum());
 

@@ -1,6 +1,8 @@
 import axios from "axios";
 import authHeader from "./auth-header";
-const API_URL = "http://localhost:8081/api/test/user/";
+import { user_service_URL } from "./URLprovider";
+//const API_URL = "http://localhost:8081/api/test/user/";
+const API_URL = user_service_URL
 class AppointmentProvider{
     setCurrentAppointment=(appointment)=>{
         localStorage.setItem("appointment", JSON.stringify(appointment));

@@ -75,7 +75,7 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public String getUsername() {
-        return username;
+        return username;//this is were you can change username to email
     }
 
 

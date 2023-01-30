@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.examly.springapp.exception.ResourceNotFoundException;
 import com.examly.springapp.model.ERole;
 import com.examly.springapp.model.Role;
 import com.examly.springapp.payload.request.RequestBox;
@@ -68,6 +69,7 @@ public class UserController {
     public User addUser(@RequestBody SignupRequest request)
     //public User addUser(@RequestBody RequestBox request)// this is just a request body not a signup
     {
+        
         Set<Role> roles = retrieveRoles(request.getRole());
 
         User user = new User(request.getUsername(),
@@ -82,11 +84,15 @@ public class UserController {
 
     @GetMapping("/get/{id}")
     public Optional<User> getUser(@PathVariable("id") Long id) {
+        if(!userRepository.findById(id).isPresent()){
+            throw  new ResourceNotFoundException("User not exist with id " + id);
+        }
         return userRepository.findById(id);
     }
 
     @GetMapping("/get")
     public List<User> getUsers() {
+      
         return userRepository.findAll();
     }
 
@@ -95,15 +101,15 @@ public class UserController {
     // public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody
     // User userDetails)//this is just a request body not a signup
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody RequestBox request) {
+        if(!userRepository.findById(id).isPresent()){
+            throw  new ResourceNotFoundException("User not exist with id " + id);
+        }
+        
         User user = userRepository.findById(id).get();
-        // .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id:
-        // " + id));
-        // user.setFirstName(employeeDetails.getFirstName());
-        // employee.setEmailId(employeeDetails.getEmailId());
-        // employee.setLastName(employeeDetails.getLastName());
+        
         user.setUsername(request.getUsername());
         user.setEmail(request.getEmail());
-        // user.setPassword(request.getPassword());
+        
         user.setMobilenum(request.getMobilenum());
         // Set<Role> roles = retrieveRoles(request.getRole());
         // user.setRoles(roles);
@@ -114,9 +120,11 @@ public class UserController {
     @PreAuthorize("hasRole('USER')")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Map<String, Boolean>> deleteEmployee(@PathVariable Long id) {
-        // User user = userRepository.findById(id)
-        // .orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id:
-        // " + id));
+        Optional<User> user = userRepository.findById(id);
+        //.orElseThrow(() -> new ResourceNotFoundException("User not exist with id " + id));
+        if(!user.isPresent()){
+            throw  new ResourceNotFoundException("User not exist with id " + id);
+        }
         // userRepository.delete(user);
         userRepository.deleteById(id);
         Map<String, Boolean> response = new HashMap<>();

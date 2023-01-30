@@ -24,9 +24,9 @@ import com.examly.springapp.security.service.jwt.AuthTokenFilter;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(
-		// securedEnabled = true,
-		// jsr250Enabled = true,
+		
 		prePostEnabled = true)
+//PURPOSE: Binds different filters that are used in an application
 public class WebSecurityConfig{// extends WebSecurityConfigurerAdapter {
 	@Autowired
 	UserDetailsServiceImpl userDetailsService;
@@ -48,8 +48,8 @@ public class WebSecurityConfig{// extends WebSecurityConfigurerAdapter {
 	public DaoAuthenticationProvider authenticationProvider() {
 	DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
 
-	 authProvider.setUserDetailsService(userDetailsService);
-	 authProvider.setPasswordEncoder(passwordEncoder());
+	 authProvider.setUserDetailsService(userDetailsService);//fetches user details to compare with user credentials
+	 authProvider.setPasswordEncoder(passwordEncoder());//encode and decode password
 
 	 return authProvider;
 	 }
@@ -87,15 +87,16 @@ public class WebSecurityConfig{// extends WebSecurityConfigurerAdapter {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 	http.cors().and().csrf().disable()
 	.exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
-	.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-	.authorizeRequests().antMatchers("/api/auth/**").permitAll()
-	.antMatchers("/api/test/**").permitAll()
-	.anyRequest().authenticated();
+	.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()//no session occupied so makes us ensure each request is authenticated
+	.authorizeRequests().antMatchers("/api/auth/**").permitAll()//WHITELIST-means no token needed
+	.antMatchers("/api/test/**").permitAll()//WHITELIST-means no token needed
+	.anyRequest().authenticated();//any other request must be authenticated
 
 	http.authenticationProvider(authenticationProvider());
 
 	http.addFilterBefore(authenticationJwtTokenFilter(),
-	UsernamePasswordAuthenticationFilter.class);
+	UsernamePasswordAuthenticationFilter.class);// arg1(filter 1) is applied before arg2(filter 2)
+	//only if we get username and password from JWT we can create UsernamePasswordAuthentication instance
 
 	return http.build();
 	}

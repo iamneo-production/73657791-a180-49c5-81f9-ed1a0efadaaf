@@ -12,7 +12,7 @@ const Booking = () => {
   useEffect(()=>{
     getAllAppointments();
   },[]);
-  console.log(appointments);
+  //console.log(appointments);
   const deleteNow=(id)=>{
     AppointmentProvider.deleteAppointment(id).then((res)=>{
       getAllAppointments();

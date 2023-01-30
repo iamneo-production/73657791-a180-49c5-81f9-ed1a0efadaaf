@@ -22,7 +22,9 @@ import EditAppointment from "./components/EditAppointment";
 
 //import { ReqAuth } from "./services/ReqAuth";
 //import ProtectedRoute from "./services/ProtectedRoute";
-
+import { RequiredAuth } from "./authGuard/RequiredAuth";
+import { ProtectedAuth } from "./authGuard/ProtectedAuth";
+//import PageNotFound from "./components/PageNotFound";
 const App = () => {
   // const [showModeratorBoard, setShowModeratorBoard] = useState(false);
   const [showAdminBoard, setShowAdminBoard] = useState(false);
@@ -34,7 +36,7 @@ const App = () => {
 
     if (user) {
       setCurrentUser(user);
-      // setShowModeratorBoard(user.roles.includes("ROLE_MODERATOR"));
+    
       setShowAdminBoard(user.roles.includes("ROLE_ADMIN"));
 
       setShowUserBoard(user.roles.includes("ROLE_USER"));
@@ -60,13 +62,6 @@ const App = () => {
             </Link>
           </li>
 
-          {/* {showModeratorBoard && (
-            <li className="nav-item">
-              <Link to={"/mod"} className="nav-link">
-                Moderator Board
-              </Link>
-            </li>
-          )} */}
 
           {showAdminBoard && (
             <li className="nav-item">
@@ -156,27 +151,34 @@ const App = () => {
 
       <div className="container mt-3">
         <Routes>
-{/*-------------------------User Controller---------------------------------------*/}
+          {/*-------------------------User Controller---------------------------------------*/}
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/updateProfile" element={<UpdateProfile />} />
-{/*----------------------------------------------------------------*/}
+          {/*----------------------------------------------------------------*/}
           <Route path="/user" element={<BoardUser />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/mybooking" element={<Booking />} />
-          {/* <Route path="/mod" element={<BoardModerator/>} /> */}
-{/*----------------------------Service Center------------------------------------*/}
+          
+          {/*----------------------------Service Center------------------------------------*/}
           <Route path="/admin" element={<BoardAdmin />} />
-          <Route path="/addcenter" element={<AddCenter />} />
+          <Route path="/addcenter" element={<ProtectedAuth><AddCenter/></ProtectedAuth>} />
           <Route path="/editcenter" element={<AddCenter />} />
-          <Route path="/viewcenter" element={<ViewCenter />} />
-{/*----------------------------Appointment------------------------------------*/}
-          <Route path="/addAppointment" element={<AddAppointment/>}></Route>
-          <Route path="/editAppointment" element={<EditAppointment/>}></Route>
+          <Route path="/viewcenter" element={<ProtectedAuth><ViewCenter/></ProtectedAuth>} />
         
+          {/*----------------------------Appointment------------------------------------*/}
+          <Route
+            path="/addAppointment"
+            element={
+              <RequiredAuth>
+                <AddAppointment />
+              </RequiredAuth>
+            }
+          ></Route>
+          <Route path="/editAppointment" element={<RequiredAuth><EditAppointment /></RequiredAuth>}></Route>
         </Routes>
       </div>
     </div>

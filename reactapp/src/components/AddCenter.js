@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import serviceCenterProvider from "../services/serviceCenterProvider";
-import { Link ,useNavigate} from "react-router-dom";
+import { Link ,Navigate,useNavigate} from "react-router-dom";
 //import { useNavigate } from "react-router-dom";
-
+import AuthService from "../services/auth-service";
 const AddCenter = () => {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -14,7 +14,12 @@ const AddCenter = () => {
   const[sid,setSid]=useState(-1);
   //---------------------------------------------------
   const navigate = useNavigate();
-
+  const currentUser = AuthService.getCurrentUser();
+  if(currentUser.roles.includes("ROLE_ADMIN")){
+    console.log("admin is defined")
+  }else{
+    navigate("/login",{replace:true});
+  }
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
   const handleClick = async () => {
     await delay(200);
@@ -54,6 +59,7 @@ const AddCenter = () => {
     //console.log(service)
   }
   useEffect(() => {
+  
     //const service=localStorage.getItem("service");
     const service=serviceCenterProvider.getCurrentService()
     //console.log(service.sid);

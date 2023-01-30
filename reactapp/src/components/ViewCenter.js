@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import serviceCenterProvider from "../services/serviceCenterProvider";
 import { Link } from "react-router-dom";
+
 const ViewCenter = () => {
+
   const [services, setServices] = useState([]);
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
   const handleClick = async () => {
@@ -9,6 +11,7 @@ const ViewCenter = () => {
     window.location.reload();
   };
   useEffect(() => {
+   
     getAllServices();
     //console.log(services)
   }, []);
@@ -18,7 +21,7 @@ const ViewCenter = () => {
         //console.log(res.data);
       })
       .catch((err) => console.log(err));
-      //console.log(services)
+      // console.log(services)
   };
   const deleteNow=(id)=>{
     serviceCenterProvider.deleteService(id).then(res=>{

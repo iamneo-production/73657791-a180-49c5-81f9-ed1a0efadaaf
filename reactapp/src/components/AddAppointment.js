@@ -3,6 +3,7 @@ import serviceCenterProvider from '../services/serviceCenterProvider';
 import {Link,useNavigate} from "react-router-dom"
 import {format} from 'date-fns';
 import AppointmentProvider from '../services/AppointmentProvider';
+import AuthService from "../services/auth-service";
 const AddAppointment = () => {
     const [productName, setProductName] = useState("");
     const [productModelNo, setProductModelNo] = useState("");
@@ -13,6 +14,9 @@ const AddAppointment = () => {
     const[availableSlots,setAvailableSlots]=useState("");
     const[serviceCenter,setServiceCenter]=useState(serviceCenterProvider.getCurrentService());
     const navigate = useNavigate();
+  
+    
+
     function padTo2Digits(num) {
         return num.toString().padStart(2, '0');
       }

@@ -6,6 +6,9 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.List;
+
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -41,6 +44,8 @@ public class UserController {
     RoleRepository roleRepository;
     @Autowired
     PasswordEncoder encoder;
+
+    //Logger logger=LoggerFactory.getLogger(UserController.class);
 
     public Set<Role> retrieveRoles(Set<String> roles) {
         Set<Role> res = new HashSet<>();

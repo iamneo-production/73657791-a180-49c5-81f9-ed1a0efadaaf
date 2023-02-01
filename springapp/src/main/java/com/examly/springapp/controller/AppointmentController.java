@@ -25,6 +25,7 @@ import com.examly.springapp.model.Product;
 import com.examly.springapp.model.ServiceCenter;
 import com.examly.springapp.model.User;
 import com.examly.springapp.payload.request.AppoDetails;
+import com.examly.springapp.payload.request.DateUtils;
 import com.examly.springapp.payload.response.MessageResponse;
 import com.examly.springapp.repository.ProductRepository;
 import com.examly.springapp.repository.UserRepository;
@@ -38,52 +39,60 @@ import com.examly.springapp.exception.ResourceNotFoundException;
 @PreAuthorize("hasRole('USER')")
 public class AppointmentController {
     @Autowired
-    AuthenticationManager authenticationManager;  
+    AuthenticationManager authenticationManager;
     @Autowired
     UserRepository userRepository;
     @Autowired
     private ProductRepository productRepository;
     @Autowired
     private AppointmentLayer appointmentLayer;
+
     @PostMapping("/addAppo")
     public ResponseEntity<?> addAppo(@RequestBody Product product) {
-        // Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        // UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        // Authentication authentication =
+        // SecurityContextHolder.getContext().getAuthentication();
+        // UserDetailsImpl userDetails = (UserDetailsImpl)
+        // authentication.getPrincipal();
         // User user=userRepository.findById(userDetails.getId()).get();
         // product.setUserperson(user);
         // productRepository.save(product);
         // //return ResponseEntity.ok(product);
         appointmentLayer.createAppointment(product);
-       return ResponseEntity.ok(new MessageResponse("Appointment added"));
+        return ResponseEntity.ok(new MessageResponse("Appointment added"));
     }
+
     @GetMapping("/viewAppo")
     public List<Product> getAppo() {
-  
-    //     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    //     UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-    //     User user=userRepository.findById(userDetails.getId()).get();
-    //     //product.setUserperson(user);
-    //     return productRepository.findByUserperson(user);
-    //     //return ResponseEntity.ok(product);
-    //    //return ResponseEntity.ok(new MessageResponse("Appointment added"));
-       return appointmentLayer.fetchAppointment();   
-           
+
+        // Authentication authentication =
+        // SecurityContextHolder.getContext().getAuthentication();
+        // UserDetailsImpl userDetails = (UserDetailsImpl)
+        // authentication.getPrincipal();
+        // User user=userRepository.findById(userDetails.getId()).get();
+        // //product.setUserperson(user);
+        // return productRepository.findByUserperson(user);
+        // //return ResponseEntity.ok(product);
+        // //return ResponseEntity.ok(new MessageResponse("Appointment added"));
+        return appointmentLayer.fetchAppointment();
+
     }
-    //----------------Adding Service Center------------------------------------
+
+    // ----------------Adding Service Center------------------------------------
     @GetMapping("/viewServAppo")
     public List<Product> getAppoByServ(@RequestBody ServiceCenter serviceCenter) {
 
-       //return productRepository.findByServiceCenter(serviceCenter);
-       return appointmentLayer.fetchAppoByServ(serviceCenter);
+        // return productRepository.findByServiceCenter(serviceCenter);
+        return appointmentLayer.fetchAppoByServ(serviceCenter);
     }
-    //-------------------------------------------------------------------------
+
+    // -------------------------------------------------------------------------
     @PutMapping("/editAppo/{id}")
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<?> editAppo(@PathVariable Long id, @RequestBody AppoDetails productDetails) {
         // if(!productRepository.findById(id).isPresent()){
-        //     throw  new ResourceNotFoundException("Product does not exist with id " + id);
+        // throw new ResourceNotFoundException("Product does not exist with id " + id);
         // }
-        //  Product product = productRepository.findById(id).get();
+        // Product product = productRepository.findById(id).get();
         // product.setProductName(productDetails.getProductName());
         // product.setProductModelNo(productDetails.getProductModelNo());
         // product.setDateOfPurchase(productDetails.getDateOfPurchase());
@@ -94,46 +103,61 @@ public class AppointmentController {
         // Product updatedProduct= productRepository.save(product);
         // return ResponseEntity.ok(updatedProduct);
         return ResponseEntity.ok(appointmentLayer.updateAppointment(id, productDetails));
-        
-   
-       
+
     }
+
     @DeleteMapping("/delAppo/{id}")
-    public ResponseEntity<Map<String,Boolean>> deleteProduct(@PathVariable Long id){
-        //  if(!productRepository.findById(id).isPresent()){
-        //      throw  new ResourceNotFoundException("Product does not exist with id " + id);
-        //  }
-        //  Product product = productRepository.findById(id).get();
-        // // //.orElseThrow(() -> new ResourceNotFoundException("Product not exist with id: " + id));
-        //  productRepository.delete(product);
+    public ResponseEntity<Map<String, Boolean>> deleteProduct(@PathVariable Long id) {
+        // if(!productRepository.findById(id).isPresent()){
+        // throw new ResourceNotFoundException("Product does not exist with id " + id);
+        // }
+        // Product product = productRepository.findById(id).get();
+        // // //.orElseThrow(() -> new ResourceNotFoundException("Product not exist with
+        // id: " + id));
+        // productRepository.delete(product);
         appointmentLayer.deleteAppointment(id);
-        Map<String,Boolean>response=new HashMap<>();
-        response.put("deleted",Boolean.TRUE);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
         return ResponseEntity.ok(response);
     }
-    @GetMapping("/getAppo")//testing purpose only,doesnt store it in db
+
+    @GetMapping("/getAppo") // testing purpose only,doesnt store it in db
     public ResponseEntity<?> getAppo(@RequestBody Product product) {
-  
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-        User user=userRepository.findById(userDetails.getId()).get();
+        User user = userRepository.findById(userDetails.getId()).get();
         product.setUserperson(user);
-        //productRepository.save(product);
+        // productRepository.save(product);
         return ResponseEntity.ok(product);
-       //return ResponseEntity.ok(new MessageResponse("Appointment added"));
+        // return ResponseEntity.ok(new MessageResponse("Appointment added"));
     }
+
     @GetMapping("/getAppo/{id}")
     public ResponseEntity<?> getAppo(@PathVariable Long id) {
         // if(!productRepository.findById(id).isPresent()){
-        //     throw  new ResourceNotFoundException("Product does not exist with id " + id);
+        // throw new ResourceNotFoundException("Product does not exist with id " + id);
         // }
-  
-        
+
         // Product product=productRepository.findById(id).get();
-        // //.orElseThrow(() -> new ResourceNotFoundException("P not exist with id: " + id));
-        Product product=appointmentLayer.fetchAppointment(id);
+        // //.orElseThrow(() -> new ResourceNotFoundException("P not exist with id: " +
+        // id));
+        Product product = appointmentLayer.fetchAppointment(id);
         return ResponseEntity.ok(product);
-      
+
     }
-  
+
+    // ----------------------Read USER between dates---------------------------------------
+    @PreAuthorize("hasRole('ADMIN')")
+    @PostMapping("/viewUserBetweenDates")
+    public List<String> getUsersBetweenDates(@RequestBody DateUtils obj) {
+        return appointmentLayer.fetchUsersBetweenDates(obj);
+        }
+        // ----------------------Read PRODUCTS for a USER between dates---------------------------------------
+        @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
+        @PostMapping("/viewProdBetweenDates")
+        public List<String> getProductsBetweenDates(@RequestBody DateUtils obj) {
+            return appointmentLayer.fetchProductsBetweenDates(obj);
+        }
+
 }

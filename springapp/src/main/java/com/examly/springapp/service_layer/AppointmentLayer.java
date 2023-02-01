@@ -14,6 +14,7 @@ import com.examly.springapp.model.Product;
 import com.examly.springapp.model.ServiceCenter;
 import com.examly.springapp.model.User;
 import com.examly.springapp.payload.request.AppoDetails;
+import com.examly.springapp.payload.request.DateUtils;
 import com.examly.springapp.repository.ProductRepository;
 import com.examly.springapp.repository.UserRepository;
 import com.examly.springapp.security.service.UserDetailsImpl;
@@ -90,5 +91,14 @@ public class AppointmentLayer {
         Product product=productRepository.findById(id).get();
         
         return product;
+    }
+        //admin operation
+    public List<String> fetchUsersBetweenDates(DateUtils obj){
+        return productRepository.retrieveUsersBetweenDates(obj.getStartDate(), obj.getEndDate());
+    }
+        //user and admin operation
+    public List<String> fetchProductsBetweenDates(DateUtils obj){
+        User user=fetchUser();
+        return productRepository.retrieveProductsBetweenDates(obj.getStartDate(), obj.getEndDate(), user.getUsername());
     }
 }

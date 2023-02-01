@@ -1,0 +1,55 @@
+<configuration>
+    <property name="CTRL_LOG_FILE" value="./src/main/logs/ctrl-file.log"/>
+    <appender name="CONTROLLER-FILE-ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${CTRL_LOG_FILE}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>logs/archived/app.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            
+            <maxFileSize>5KB</maxFileSize>
+           
+            <totalSizeCap>20KB</totalSizeCap>
+           
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d %p %c{1.} [%t] %m%n</pattern>
+        </encoder>
+    </appender>
+    
+    <property name="EXCEPTION_LOG_FILE" value="./src/main/logs/excep-file.log"/>
+    <appender name="EXCEPTION-FILE-ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${EXCEPTION_LOG_FILE}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>logs/archived/app-exception.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            
+            <maxFileSize>5KB</maxFileSize>
+           
+            <totalSizeCap>20KB</totalSizeCap>
+           
+            <maxHistory>60</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d %p %c{1.} [%t] %m%n</pattern>
+        </encoder>
+    </appender>
+    
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
+            </Pattern>
+        </layout>
+    </appender>
+    <logger name="com.examly.springapp" level="trace" additivity="false">
+        <appender-ref ref="CONTROLLER-FILE-ROLLING"/>
+    </logger>
+
+    <logger name="com.examly.springapp.exception" level="warn" additivity="true">
+        <appender-ref ref="EXCEPTION-FILE-ROLLING"/>
+    </logger>
+    
+    <root level="warn">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>

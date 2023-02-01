@@ -1,0 +1,33 @@
+2023-01-31 17:47:59,196 DEBUG com.examly.springapp.security.service.jwt.AuthTokenFilter [restartedMain] Filter 'authenticationJwtTokenFilter' configured for use
+2023-01-31 17:48:00,585 INFO com.examly.springapp.SpringappApplication [restartedMain] Started SpringappApplication in 7.791 seconds (JVM running for 118.713)
+2023-01-31 17:48:02,613 INFO com.examly.springapp.SpringappApplication [restartedMain] Starting SpringappApplication using Java 15.0.2 on DESKTOP-C03LFNF with PID 7612 (D:\PPR\73657791-a180-49c5-81f9-ed1a0efadaaf\springapp\target\classes started by Acer in D:\PPR\73657791-a180-49c5-81f9-ed1a0efadaaf\springapp)
+2023-01-31 17:48:02,614 DEBUG com.examly.springapp.SpringappApplication [restartedMain] Running with Spring Boot v2.4.5, Spring v5.3.6
+2023-01-31 17:48:02,619 INFO com.examly.springapp.SpringappApplication [restartedMain] No active profile set, falling back to default profiles: default
+2023-01-31 17:48:07,208 DEBUG com.examly.springapp.security.service.jwt.AuthTokenFilter [restartedMain] Filter 'authenticationJwtTokenFilter' configured for use
+2023-01-31 17:48:08,508 INFO com.examly.springapp.SpringappApplication [restartedMain] Started SpringappApplication in 6.21 seconds (JVM running for 126.635)
+2023-01-31 17:48:33,576 INFO com.examly.springapp.SpringappApplication [restartedMain] Starting SpringappApplication using Java 15.0.2 on DESKTOP-C03LFNF with PID 7612 (D:\PPR\73657791-a180-49c5-81f9-ed1a0efadaaf\springapp\target\classes started by Acer in D:\PPR\73657791-a180-49c5-81f9-ed1a0efadaaf\springapp)
+2023-01-31 17:48:33,576 DEBUG com.examly.springapp.SpringappApplication [restartedMain] Running with Spring Boot v2.4.5, Spring v5.3.6
+2023-01-31 17:48:33,585 INFO com.examly.springapp.SpringappApplication [restartedMain] No active profile set, falling back to default profiles: default
+2023-01-31 17:48:36,591 DEBUG com.examly.springapp.security.service.jwt.AuthTokenFilter [restartedMain] Filter 'authenticationJwtTokenFilter' configured for use
+2023-01-31 17:48:37,977 INFO com.examly.springapp.SpringappApplication [restartedMain] Started SpringappApplication in 4.605 seconds (JVM running for 156.105)
+2023-01-31 17:49:20,932 INFO com.examly.springapp.SpringappApplication [restartedMain] Starting SpringappApplication using Java 15.0.2 on DESKTOP-C03LFNF with PID 7612 (D:\PPR\73657791-a180-49c5-81f9-ed1a0efadaaf\springapp\target\classes started by Acer in D:\PPR\73657791-a180-49c5-81f9-ed1a0efadaaf\springapp)
+2023-01-31 17:49:20,932 DEBUG com.examly.springapp.SpringappApplication [restartedMain] Running with Spring Boot v2.4.5, Spring v5.3.6
+2023-01-31 17:49:20,934 INFO com.examly.springapp.SpringappApplication [restartedMain] No active profile set, falling back to default profiles: default
+2023-01-31 17:49:25,959 DEBUG com.examly.springapp.security.service.jwt.AuthTokenFilter [restartedMain] Filter 'authenticationJwtTokenFilter' configured for use
+2023-01-31 17:49:27,598 INFO com.examly.springapp.SpringappApplication [restartedMain] Started SpringappApplication in 6.829 seconds (JVM running for 205.726)
+2023-01-31 17:52:04,992 INFO com.examly.springapp.SpringappApplication [restartedMain] Starting SpringappApplication using Java 15.0.2 on DESKTOP-C03LFNF with PID 19056 (D:\PPR\73657791-a180-49c5-81f9-ed1a0efadaaf\springapp\target\classes started by Acer in D:\PPR\73657791-a180-49c5-81f9-ed1a0efadaaf\springapp)
+2023-01-31 17:52:04,996 DEBUG com.examly.springapp.SpringappApplication [restartedMain] Running with Spring Boot v2.4.5, Spring v5.3.6
+2023-01-31 17:52:04,998 INFO com.examly.springapp.SpringappApplication [restartedMain] No active profile set, falling back to default profiles: default
+2023-01-31 17:52:18,359 DEBUG com.examly.springapp.security.service.jwt.AuthTokenFilter [restartedMain] Filter 'authenticationJwtTokenFilter' configured for use
+2023-01-31 17:52:21,366 INFO com.examly.springapp.SpringappApplication [restartedMain] Started SpringappApplication in 17.472 seconds (JVM running for 19.432)
+2023-01-31 18:09:44,843 INFO com.examly.springapp.SpringappApplication [restartedMain] Starting SpringappApplication using Java 15.0.2 on DESKTOP-C03LFNF with PID 21492 (D:\PPR\73657791-a180-49c5-81f9-ed1a0efadaaf\springapp\target\classes started by Acer in D:\PPR\73657791-a180-49c5-81f9-ed1a0efadaaf\springapp)
+2023-01-31 18:09:44,864 DEBUG com.examly.springapp.SpringappApplication [restartedMain] Running with Spring Boot v2.4.5, Spring v5.3.6
+2023-01-31 18:09:44,870 INFO com.examly.springapp.SpringappApplication [restartedMain] No active profile set, falling back to default profiles: default
+2023-01-31 18:10:03,312 DEBUG com.examly.springapp.security.service.jwt.AuthTokenFilter [restartedMain] Filter 'authenticationJwtTokenFilter' configured for use
+2023-01-31 18:10:06,568 INFO com.examly.springapp.SpringappApplication [restartedMain] Started SpringappApplication in 23.148 seconds (JVM running for 24.708)
+2023-01-31 18:14:06,895 INFO com.examly.springapp.SpringappApplication [restartedMain] Starting SpringappApplication using Java 15.0.2 on DESKTOP-C03LFNF with PID 21492 (D:\PPR\73657791-a180-49c5-81f9-ed1a0efadaaf\springapp\target\classes started by Acer in D:\PPR\73657791-a180-49c5-81f9-ed1a0efadaaf\springapp)
+2023-01-31 18:14:06,898 DEBUG com.examly.springapp.SpringappApplication [restartedMain] Running with Spring Boot v2.4.5, Spring v5.3.6
+2023-01-31 18:14:06,898 INFO com.examly.springapp.SpringappApplication [restartedMain] No active profile set, falling back to default profiles: default
+2023-01-31 18:24:31,072 INFO com.examly.springapp.SpringappApplication [restartedMain] Starting SpringappApplication using Java 15.0.2 on DESKTOP-C03LFNF with PID 22268 (D:\PPR\73657791-a180-49c5-81f9-ed1a0efadaaf\springapp\target\classes started by Acer in D:\PPR\73657791-a180-49c5-81f9-ed1a0efadaaf\springapp)
+2023-01-31 18:24:31,077 DEBUG com.examly.springapp.SpringappApplication [restartedMain] Running with Spring Boot v2.4.5, Spring v5.3.6
+2023-01-31 18:24:31,082 INFO com.examly.springapp.SpringappApplication [restartedMain] No active profile set, falling back to default profiles: default

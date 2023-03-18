@@ -20,10 +20,16 @@ public class ResourceExceptionHandler {
     }
     @ExceptionHandler({ AccessDeniedException.class })
     public ResponseEntity<Object> handleAccessDeniedException(Exception ex) {
-        logger.error("Access is Denied for unauthorised usage : {}", ex.getMessage());
+       // logger.error("Access is Denied for unauthorised usage : {}", ex.getMessage(), ex);
+       logger.error(ex.toString());
         return new ResponseEntity<>(
           "ACCESS DENIED for requested resource",HttpStatus.FORBIDDEN);
     }
-    
+    @ExceptionHandler({Exception.class})
+    public ResponseEntity<Object> handleUnknownException(Exception ex){
+        logger.error("Ran into Exception : {}", ex.getMessage());
+        return new ResponseEntity<>(
+          "Exception has Occured",HttpStatus.SEE_OTHER);
+    }
     
 }

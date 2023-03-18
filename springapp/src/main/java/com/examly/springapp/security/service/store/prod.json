@@ -31,5 +31,46 @@
     "contactNumber": "9940229658",
     "problemDescription": "sound not working",
     "availableSlots": "03:30"
-}
+},
+
+{
+    "productName": "Rolling chair",
+    "productModelNo": "89YU",
+    "dateOfPurchase": "01/02/2023",
+    "contactNumber": "9940423091",
+    "problemDescription": "leg problem",
+    "availableSlots": "16:30",
+   
+    "serviceCenter": {
+        "sid": 2,
+        "name": "Chair Service",
+        "phone": "9840915314",
+        "address": "parrys conner",
+        "img_url": "https://rukminim1.flixcart.com/image/416/416/l0zm64w0/office-study-chair/c/7/b/-original-imagcnvjcbf82yeg.jpeg?q=70",
+        "mailId": "amutham@gmail.com",
+        "description": "we service chairs here."
+    }
+},
+{
+    
+    "productName": "Teak Wood Table",
+    "productModelNo": "X789",
+    "dateOfPurchase": "01/02/2023",
+    "contactNumber": "9840915313",
+    "problemDescription": "screw is loose",
+    "availableSlots": "16:12",
+    "serviceCenter": {
+        "sid": 1,
+        "name": "Table Service",
+        "phone": "9941279659",
+        "address": "anna salai",
+        "img_url": "https://www.shutterstock.com/image-photo/brown-light-wooden-round-dining.jpg",
+        "mailId": "satya@gmail.com",
+        "description": "we service table here"
+    }
+},
+{
+    "startDate":"2022-12-27",
+    "endDate":"2023-01-28"
+   }
 ]

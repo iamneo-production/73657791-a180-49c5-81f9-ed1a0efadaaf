@@ -42,7 +42,7 @@ public class AuthTokenFilter  extends OncePerRequestFilter {
                   userDetails,
                   null,
                   userDetails.getAuthorities());
-          authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+          authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));//(5)
   
           SecurityContextHolder.getContext().setAuthentication(authentication);
         }

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
@@ -48,7 +49,10 @@ public class AppointmentController {
     private AppointmentLayer appointmentLayer;
 
     @PostMapping("/addAppo")
-    public ResponseEntity<?> addAppo(@RequestBody Product product) {
+    public ResponseEntity<?> addAppo(@RequestBody Product product,
+                            @RequestParam("woodtype") Optional<String> woodtype,
+                            @RequestParam("plastictype") Optional<String> plastictype)
+                             {
         // Authentication authentication =
         // SecurityContextHolder.getContext().getAuthentication();
         // UserDetailsImpl userDetails = (UserDetailsImpl)
@@ -57,7 +61,8 @@ public class AppointmentController {
         // product.setUserperson(user);
         // productRepository.save(product);
         // //return ResponseEntity.ok(product);
-        appointmentLayer.createAppointment(product);
+        //appointmentLayer.createAppointment(product);
+        appointmentLayer.createAppointment(product,woodtype,plastictype);
         return ResponseEntity.ok(new MessageResponse("Appointment added"));
     }
 
@@ -148,7 +153,7 @@ public class AppointmentController {
     }
 
     // ----------------------Read USER between dates---------------------------------------
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/viewUserBetweenDates")
     public List<String> getUsersBetweenDates(@RequestBody DateUtils obj) {
         return appointmentLayer.fetchUsersBetweenDates(obj);
@@ -159,5 +164,8 @@ public class AppointmentController {
         public List<String> getProductsBetweenDates(@RequestBody DateUtils obj) {
             return appointmentLayer.fetchProductsBetweenDates(obj);
         }
-
+        //  public List<?> getProductsBetweenDates(@RequestBody DateUtils obj) {
+        //     return appointmentLayer.fetchProductsBetweenDates(obj);
+        // }
+        
 }

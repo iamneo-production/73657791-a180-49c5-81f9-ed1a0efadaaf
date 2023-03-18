@@ -1,5 +1,6 @@
 package com.examly.springapp.service_layer;
 
+import java.lang.StackWalker.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,10 +14,13 @@ import com.examly.springapp.exception.ResourceNotFoundException;
 import com.examly.springapp.model.Product;
 import com.examly.springapp.model.ServiceCenter;
 import com.examly.springapp.model.User;
+import com.examly.springapp.model.child.PlasticProduct;
+import com.examly.springapp.model.child.WoodProduct;
 import com.examly.springapp.payload.request.AppoDetails;
 import com.examly.springapp.payload.request.DateUtils;
 import com.examly.springapp.repository.ProductRepository;
 import com.examly.springapp.repository.UserRepository;
+//import com.examly.springapp.repository.WoodProductRepository;
 import com.examly.springapp.security.service.UserDetailsImpl;
 
 @Service
@@ -27,7 +31,8 @@ public class AppointmentLayer {
     UserRepository userRepository;
     @Autowired
     private ProductRepository productRepository;
-
+    // @Autowired
+    // private WoodProductRepository woodProductRepository;
     public User fetchUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
@@ -45,6 +50,42 @@ public class AppointmentLayer {
         product.setUserperson(user);
         productRepository.save(product);
     }
+    //overloading
+    public void createAppointment(Product product,Optional<String> woodtype,
+                    Optional<String> plastictype ) {
+        User user = fetchUser();
+        if(woodtype.isPresent()){
+            WoodProduct woodProduct=new WoodProduct();
+            woodProduct.setWoodtype(woodtype.get());
+            woodProduct.setAvailableSlots(product.getAvailableSlots());
+            woodProduct.setContactNumber(product.getContactNumber());
+            woodProduct.setDateOfPurchase(product.getDateOfPurchase());
+            woodProduct.setProblemDescription(product.getProblemDescription());
+            woodProduct.setProductModelNo(product.getProductModelNo());
+            woodProduct.setProductName(product.getProductName());
+            woodProduct.setServiceCenter(product.getServiceCenter());
+            woodProduct.setUserperson(user);
+            productRepository.save(woodProduct);
+            return;    
+        }
+        if(plastictype.isPresent()){
+            PlasticProduct plasticProduct=new PlasticProduct();
+            plasticProduct.setPlastictype(plastictype.get());
+            plasticProduct.setAvailableSlots(product.getAvailableSlots());
+            plasticProduct.setContactNumber(product.getContactNumber());
+            plasticProduct.setDateOfPurchase(product.getDateOfPurchase());
+            plasticProduct.setProblemDescription(product.getProblemDescription());
+            plasticProduct.setProductModelNo(product.getProductModelNo());
+            plasticProduct.setProductName(product.getProductName());
+            plasticProduct.setServiceCenter(product.getServiceCenter());
+            plasticProduct.setUserperson(user);
+            productRepository.save(plasticProduct);
+            return ;
+        }
+        product.setUserperson(user);
+        productRepository.save(product);
+    }
+       
 
     public List<Product> fetchAppointment() {
         User user = fetchUser();
@@ -101,4 +142,9 @@ public class AppointmentLayer {
         User user=fetchUser();
         return productRepository.retrieveProductsBetweenDates(obj.getStartDate(), obj.getEndDate(), user.getUsername());
     }
+    // public List<?> fetchProductsBetweenDates(DateUtils obj){
+    //         User user=fetchUser();
+    //         return productRepository.retrieveProductsBetweenDates(obj.getStartDate(), obj.getEndDate(), user.getUsername());
+    //     }
+
 }

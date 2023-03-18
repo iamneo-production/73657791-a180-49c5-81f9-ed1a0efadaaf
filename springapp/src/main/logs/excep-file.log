@@ -1,0 +1,6 @@
+2023-02-07 10:50:40,905 ERROR com.examly.springapp.exception.ResourceExceptionHandler [http-nio-8081-exec-10] Ran into Exception : Required request body is missing: public org.springframework.http.ResponseEntity<?> com.examly.springapp.controller.AppointmentController.getAppo(com.examly.springapp.model.Product)
+2023-02-07 10:58:28,712 ERROR com.examly.springapp.exception.ResourceExceptionHandler [http-nio-8081-exec-6] Access is Denied for unauthorised usage : Access is denied
+2023-02-07 11:03:24,098 ERROR com.examly.springapp.exception.ResourceExceptionHandler [http-nio-8081-exec-5] Access is Denied for unauthorised usage : Access is denied
+2023-02-07 12:30:35,171 ERROR com.examly.springapp.exception.ResourceExceptionHandler [http-nio-8081-exec-4] Access is Denied for unauthorised usage : Access is denied
+2023-02-07 14:21:39,013 ERROR com.examly.springapp.exception.ResourceExceptionHandler [http-nio-8081-exec-2] Access is Denied for unauthorised usage : Access is denied
+2023-02-07 15:07:47,040 ERROR com.examly.springapp.exception.ResourceExceptionHandler [http-nio-8081-exec-10] Ran into Exception : Bad credentials

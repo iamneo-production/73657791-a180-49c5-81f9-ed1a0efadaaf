@@ -26,7 +26,8 @@ import com.examly.springapp.security.service.jwt.AuthTokenFilter;
 @EnableGlobalMethodSecurity(
 		
 		prePostEnabled = true)
-//PURPOSE: Binds different filters that are used in an application
+//PURPOSE: Binds different filters that are used in an application 
+		   //where Authentication information is provided here
 public class WebSecurityConfig{// extends WebSecurityConfigurerAdapter {
 	@Autowired
 	UserDetailsServiceImpl userDetailsService;
@@ -88,15 +89,16 @@ public class WebSecurityConfig{// extends WebSecurityConfigurerAdapter {
 	http.cors().and().csrf().disable()
 	.exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
 	.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()//no session occupied so makes us ensure each request is authenticated
-	.authorizeRequests().antMatchers("/api/auth/**").permitAll()//WHITELIST-means no token needed
-	.antMatchers("/api/test/**").permitAll()//WHITELIST-means no token needed
+	.authorizeRequests().antMatchers("/api/auth/**").permitAll()//WHITELIST-means no jwt auth token needed
+	.antMatchers("/api/test/**").permitAll()//WHITELIST-means no jwt auth token needed
 	.anyRequest().authenticated();//any other request must be authenticated
 
 	http.authenticationProvider(authenticationProvider());
 
 	http.addFilterBefore(authenticationJwtTokenFilter(),
 	UsernamePasswordAuthenticationFilter.class);// arg1(filter 1) is applied before arg2(filter 2)
-	//only if we get username and password from JWT we can create UsernamePasswordAuthentication instance
+	//only if we get username and password from JWT are in a encryted form
+	//we can create UsernamePasswordAuthentication instance
 
 	return http.build();
 	}

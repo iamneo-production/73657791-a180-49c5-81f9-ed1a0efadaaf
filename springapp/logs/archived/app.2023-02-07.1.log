@@ -1,0 +1,28 @@
+2023-02-07 12:31:48,355 DEBUG com.examly.springapp.security.service.jwt.AuthTokenFilter [restartedMain] Filter 'authenticationJwtTokenFilter' configured for use
+2023-02-07 12:31:54,470 INFO com.examly.springapp.SpringappApplication [restartedMain] Started SpringappApplication in 21.074 seconds (JVM running for 23.06)
+2023-02-07 12:32:07,316 INFO com.examly.springapp.SpringappApplication [restartedMain] Starting SpringappApplication using Java 15.0.2 on DESKTOP-C03LFNF with PID 20204 (D:\PPR\73657791-a180-49c5-81f9-ed1a0efadaaf\springapp\target\classes started by Acer in D:\PPR\73657791-a180-49c5-81f9-ed1a0efadaaf\springapp)
+2023-02-07 12:32:07,320 DEBUG com.examly.springapp.SpringappApplication [restartedMain] Running with Spring Boot v2.4.5, Spring v5.3.6
+2023-02-07 12:32:07,322 INFO com.examly.springapp.SpringappApplication [restartedMain] No active profile set, falling back to default profiles: default
+2023-02-07 12:32:22,042 DEBUG com.examly.springapp.security.service.jwt.AuthTokenFilter [restartedMain] Filter 'authenticationJwtTokenFilter' configured for use
+2023-02-07 12:32:24,945 INFO com.examly.springapp.SpringappApplication [restartedMain] Started SpringappApplication in 19.075 seconds (JVM running for 20.75)
+2023-02-07 14:18:41,417 INFO com.examly.springapp.SpringappApplication [restartedMain] Starting SpringappApplication using Java 15.0.2 on DESKTOP-C03LFNF with PID 23260 (D:\PPR\73657791-a180-49c5-81f9-ed1a0efadaaf\springapp\target\classes started by Acer in D:\PPR\73657791-a180-49c5-81f9-ed1a0efadaaf\springapp)
+2023-02-07 14:18:41,422 DEBUG com.examly.springapp.SpringappApplication [restartedMain] Running with Spring Boot v2.4.5, Spring v5.3.6
+2023-02-07 14:18:41,423 INFO com.examly.springapp.SpringappApplication [restartedMain] No active profile set, falling back to default profiles: default
+2023-02-07 14:18:53,776 DEBUG com.examly.springapp.security.service.jwt.AuthTokenFilter [restartedMain] Filter 'authenticationJwtTokenFilter' configured for use
+2023-02-07 14:18:57,510 INFO com.examly.springapp.SpringappApplication [restartedMain] Started SpringappApplication in 17.221 seconds (JVM running for 18.903)
+2023-02-07 14:21:38,609 ERROR com.examly.springapp.security.service.jwt.JwtUtils [http-nio-8081-exec-2] Invalid JWT signature: JWT signature does not match locally computed signature. JWT validity cannot be asserted and should not be trusted.
+2023-02-07 14:21:39,013 ERROR com.examly.springapp.exception.ResourceExceptionHandler [http-nio-8081-exec-2] Access is Denied for unauthorised usage : Access is denied
+2023-02-07 14:39:30,288 INFO com.examly.springapp.SpringappApplication [restartedMain] Starting SpringappApplication using Java 15.0.2 on DESKTOP-C03LFNF with PID 23260 (D:\PPR\73657791-a180-49c5-81f9-ed1a0efadaaf\springapp\target\classes started by Acer in D:\PPR\73657791-a180-49c5-81f9-ed1a0efadaaf\springapp)
+2023-02-07 14:39:30,290 DEBUG com.examly.springapp.SpringappApplication [restartedMain] Running with Spring Boot v2.4.5, Spring v5.3.6
+2023-02-07 14:39:30,291 INFO com.examly.springapp.SpringappApplication [restartedMain] No active profile set, falling back to default profiles: default
+2023-02-07 14:39:43,317 DEBUG com.examly.springapp.security.service.jwt.AuthTokenFilter [restartedMain] Filter 'authenticationJwtTokenFilter' configured for use
+2023-02-07 14:39:55,116 INFO com.examly.springapp.SpringappApplication [restartedMain] Started SpringappApplication in 26.469 seconds (JVM running for 1276.509)
+2023-02-07 14:39:59,150 INFO com.examly.springapp.SpringappApplication [restartedMain] Starting SpringappApplication using Java 15.0.2 on DESKTOP-C03LFNF with PID 23260 (D:\PPR\73657791-a180-49c5-81f9-ed1a0efadaaf\springapp\target\classes started by Acer in D:\PPR\73657791-a180-49c5-81f9-ed1a0efadaaf\springapp)
+2023-02-07 14:39:59,150 DEBUG com.examly.springapp.SpringappApplication [restartedMain] Running with Spring Boot v2.4.5, Spring v5.3.6
+2023-02-07 14:39:59,151 INFO com.examly.springapp.SpringappApplication [restartedMain] No active profile set, falling back to default profiles: default
+2023-02-07 14:40:07,558 DEBUG com.examly.springapp.security.service.jwt.AuthTokenFilter [restartedMain] Filter 'authenticationJwtTokenFilter' configured for use
+2023-02-07 14:40:12,890 INFO com.examly.springapp.SpringappApplication [restartedMain] Started SpringappApplication in 15.048 seconds (JVM running for 1294.284)
+2023-02-07 14:40:15,260 INFO com.examly.springapp.SpringappApplication [restartedMain] Starting SpringappApplication using Java 15.0.2 on DESKTOP-C03LFNF with PID 23260 (D:\PPR\73657791-a180-49c5-81f9-ed1a0efadaaf\springapp\target\classes started by Acer in D:\PPR\73657791-a180-49c5-81f9-ed1a0efadaaf\springapp)
+2023-02-07 14:40:15,261 DEBUG com.examly.springapp.SpringappApplication [restartedMain] Running with Spring Boot v2.4.5, Spring v5.3.6
+2023-02-07 14:40:15,261 INFO com.examly.springapp.SpringappApplication [restartedMain] No active profile set, falling back to default profiles: default
+2023-02-07 14:40:18,937 DEBUG com.examly.springapp.security.service.jwt.AuthTokenFilter [restartedMain] Filter 'authenticationJwtTokenFilter' configured for use

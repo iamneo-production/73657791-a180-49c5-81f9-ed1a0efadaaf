@@ -1,6 +1,7 @@
 package com.examly.springapp.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.examly.springapp.model.Product;
+import com.examly.springapp.model.child.WoodProduct;
 import com.examly.springapp.payload.response.MessageResponse;
 import com.examly.springapp.repository.ProductRepository;
+//import com.examly.springapp.repository.WoodProductRepository;
 
 
 
@@ -27,7 +30,8 @@ import com.examly.springapp.repository.ProductRepository;
 public class ProductController {
     @Autowired
     private ProductRepository productRepository;
-
+    // @Autowired
+    // private WoodProductRepository woodproductRepository;
     @PostMapping("/addProd")
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<?> addProduct(@RequestBody Product product) {
@@ -35,6 +39,21 @@ public class ProductController {
         //return ResponseEntity.ok(product);
         return ResponseEntity.ok(new MessageResponse("Appointment added"));
     }
+    //---------WOOD Product-----------------------
+    // @PostMapping("/addWoodProd")
+    // @PreAuthorize("hasRole('USER')")
+    // public ResponseEntity<?> addWoodProduct(@RequestBody WoodProduct product) {
+    //     woodproductRepository.save(product);
+    //     return ResponseEntity.ok(product);
+    //     //return ResponseEntity.ok(new MessageResponse("Product added"));
+    // }
+    // @GetMapping("/getWoodProds")
+    // @PreAuthorize("hasRole('USER')")
+    // public List<?> getWoodProduct(){
+    //     return woodproductRepository.findAll();
+    // }
+    
+    //--------------------------------------------
     @GetMapping("/getProd/{id}")
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<?> getProductById(@PathVariable Long id) {

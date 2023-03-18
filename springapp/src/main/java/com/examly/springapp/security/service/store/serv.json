@@ -13,4 +13,23 @@
     "img_url":"https://www.shutterstock.com/image-photo/brown-light-wooden-round-dining.jpg",
     "mailId":"satya@gmail.com",
     "description":"leg has to be fixed"
-}]
+},
+[{
+    
+    "productName": "Teak Wood Table",
+    "productModelNo": "X789",
+    "dateOfPurchase": "01/02/2023",
+    "contactNumber": "9840915313",
+    "problemDescription": "screw is loose",
+    "availableSlots": "16:12",
+    "serviceCenter": {
+        "sid": 1,
+        "name": "Table Service",
+        "phone": "9941279659",
+        "address": "anna salai",
+        "img_url": "https://www.shutterstock.com/image-photo/brown-light-wooden-round-dining.jpg",
+        "mailId": "satya@gmail.com",
+        "description": "we service table here"
+    }
+}
+]]

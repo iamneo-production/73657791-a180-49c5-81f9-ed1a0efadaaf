@@ -30,6 +30,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -53,29 +55,33 @@ import com.examly.springapp.model.ServiceCenter;
         @PrimaryKeyJoinColumn(name = "prod_id", referencedColumnName = "id") })
 // @SecondaryTable(name = "cus_prod",pkJoinColumns ={
 // @PrimaryKeyJoinColumn(name="prod_id",referencedColumnName = "id")})
+//-------------------------ADDING INHERITENCE--------------------------
+@Inheritance(strategy = InheritanceType.JOINED)
+//---------------------------------------------------------------------
 public class Product implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
-    @Column(nullable = false)
+    @Column(nullable = false,name="product_name")
     @NotBlank
 
     private String productName;
-    @Column
+    @Column(name="product_model_no")
     @NotBlank
     private String productModelNo;
-    @Column(nullable = false)
+    @Column(nullable = false,name="date_of_purchase")
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dateOfPurchase;
 
-    @Column
+    @Column(name="contact_number")
     @NotBlank
     @Size(min = 8, max = 10)
     private String contactNumber;
-    @Column
+    @Column(name="problem_description")
     @Size(max = 120, min = 10)
     private String problemDescription;
-    @Column(nullable = false)
+    @Column(nullable = false,name="available_slots")
     // @NotBlank
     @JsonFormat(pattern = "HH:mm")
     private LocalTime availableSlots;
@@ -102,7 +108,7 @@ public class Product implements Serializable {
 
     // ----------------Adding Service Center------------------------------------
     @ManyToOne(targetEntity = ServiceCenter.class, fetch = FetchType.LAZY)
-
+        //changing serv_id to sid
     @JoinColumn(name = "serv_id", referencedColumnName =
     "sid",table="cus_prod_serv")
     @JoinColumn(name = "serv_name", referencedColumnName =

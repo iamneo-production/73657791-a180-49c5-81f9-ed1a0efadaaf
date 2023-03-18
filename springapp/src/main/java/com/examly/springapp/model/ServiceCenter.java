@@ -23,7 +23,8 @@ import org.hibernate.annotations.Parameter;
 public class ServiceCenter implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    // @Column(nullable = false)
+    @Column(nullable = false)
+    //@Column(name="serv_id")
     private Long sid;
     @Column(nullable = false)
     private String name;
